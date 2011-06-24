@@ -23,7 +23,7 @@ To make model noteable you need to include Mongoid::Noteable into your document.
     include Mongoid::Followable
   end
 
-Now you can follow others in your controller:
+Now you can spread news in your controller:
   ...
     # This is what mongoid_followable does
     @group = Group.new
