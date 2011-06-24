@@ -1,0 +1,54 @@
+= mongoid_noteable
+
+acts just like facebook's news feed(recommend to be used with mongoid_followable[https://github.com/lastomato/mongoid_followable])
+
+== Installation
+
+In console:
+  gem install mongoid_noteable
+or in Gemfile:
+  gem 'mongoid_noteable', "~> 0.0.1"
+
+== Usage
+
+To make model noteable you need to include Mongoid::Noteable into your document. Using it accompany with mongoid_followable is recommended.
+  class User
+    include Mongoid::Document
+    include Mongoid::Follower
+    include Mongoid::Noteable
+  end
+
+  class Group
+    include Mongoid::Document
+    include Mongoid::Followable
+  end
+
+Now you can follow others in your controller:
+  ...
+    # This is what mongoid_followable does
+    @group = Group.new
+    @group.save
+
+    current_user.follow(@group)
+
+    # Below is what mongoid_noteable does
+    current_user.add_news(@group.name, "published", @some_post.name)
+    current_user.recent_news
+    current_user.news_with_subject(@group.name)
+    current_user.news_with_action("published")
+    current_user.news_with_object(@some_object.some_attribute)
+  ...
+
+* Any bug or issue, please send me an email: ustc.flyingfox@gmail.com
+
+== TODO
+
+* fix bug in test
+* news_like_* methods for fuzzy search
+* more fields(Besides "subject", "action" and "object") in News.
+
+(If you have any idea, advice or suggestion, don't hesitate to contact me!)
+
+== Copyright
+
+Copyright (c) Jie Fan. See LICENSE.txt for further details.
