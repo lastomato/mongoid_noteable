@@ -40,7 +40,7 @@ describe Mongoid::Noteable do
 
         u.add_news("I", "come back", "again")
 
-        u.all_news[0..4].should == ["I come back again", "I cannot understand what they are saying", "Zheng shouted 'Wow!'", "Cover commented 'Nice!'", "Shamir commented 'Great Job!'"]
+        u.all_news.should == ["I come back again", "I cannot understand what they are saying", "Zheng shouted 'Wow!'", "Cover commented 'Nice!'", "Shamir commented 'Great Job!'"]
       end
     end
   end
