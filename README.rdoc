@@ -45,7 +45,7 @@ Now you can spread news in your controller:
 
 == TODO
 
-* fix bug in test
+* fix bug in test #FINISHED#
 * news_like_* methods for fuzzy search
 * more fields(Besides "subject", "action" and "object") in News.
 
