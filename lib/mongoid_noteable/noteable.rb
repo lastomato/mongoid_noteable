@@ -32,7 +32,7 @@ module Mongoid
     #   args => news objects
 
     def add_news(*args)
-      self.news.create!(:subject => args[0].to_s, :action => args[1].to_s, :object => args[2].to_s)
+      self.news.create!(:subject => args[0].to_s, :action => args[1].to_s, :object => args[2].to_s, :headline => (args[3] == 1 ? true : false))
 
       if self.news.count > self.news_count
         self.news[self.news_count..-1].each do |news|
@@ -45,6 +45,12 @@ module Mongoid
 
     def all_news
       rebuild_news(self.news.desc_created_at)
+    end
+
+    #highlighted news
+
+    def highlight_news
+      rebuild_news(self.news.by_field("headline", true))
     end
 
     #get all recent news

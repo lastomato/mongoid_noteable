@@ -19,15 +19,15 @@ describe Mongoid::Noteable do
       end
 
       it "adding several news" do
-        u.add_news("Shannon", "published", "A Symbolic Analysis of Relay and Switching Circuits")
+        u.add_news("Shannon", "published", "A Symbolic Analysis of Relay and Switching Circuits", 1)
         sleep(1)
-        u.add_news("Shamir", "commented", "'Great Job!'")
+        u.add_news("Shamir", "commented", "'Great Job!'", 0)
         sleep(1)
-        u.add_news("Cover", "commented", "'Nice!'")
+        u.add_news("Cover", "commented", "'Nice!'", 0)
         sleep(1)
-        u.add_news("Zheng", "shouted", "'Wow!'")
+        u.add_news("Zheng", "shouted", "'Wow!'", 0)
         sleep(1)
-        u.add_news("I", "cannot understand", "what they are saying")
+        u.add_news("I", "cannot understand", "what they are saying", 0)
         sleep(1)
 
         u.all_news.should == ["I cannot understand what they are saying", "Zheng shouted 'Wow!'", "Cover commented 'Nice!'", "Shamir commented 'Great Job!'", "Shannon published A Symbolic Analysis of Relay and Switching Circuits"]
@@ -38,7 +38,9 @@ describe Mongoid::Noteable do
         u.news_with_action("commented").should == ["Cover commented 'Nice!'", "Shamir commented 'Great Job!'"]
         u.news_with_object("'Wow!'").should == ["Zheng shouted 'Wow!'"]
 
-        u.add_news("I", "come back", "again")
+        u.highlight_news.should == ["Shannon published A Symbolic Analysis of Relay and Switching Circuits"]
+
+        u.add_news("I", "come back", "again", 0)
 
         u.all_news.should == ["I come back again", "I cannot understand what they are saying", "Zheng shouted 'Wow!'", "Cover commented 'Nice!'", "Shamir commented 'Great Job!'"]
       end

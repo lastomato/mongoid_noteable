@@ -5,7 +5,7 @@ require "mongoid_noteable/version"
 Gem::Specification.new do |s|
   s.name        = "mongoid_noteable"
   s.version     = Mongoid::Noteable::VERSION
-  s.date        = "2011-06-23"
+  s.date        = "2011-07-04"
   s.authors     = ["Jie Fan"]
   s.email       = ["ustc.flyingfox@gmail.com"]
   s.homepage    = "https://github.com/lastomato/mongoid_noteable"

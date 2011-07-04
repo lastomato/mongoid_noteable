@@ -6,6 +6,8 @@ class News
   field :action, :type => String
   field :object, :type => String
 
+  field :headline, :type => Boolean, :default => false
+
   belongs_to :noteable, :polymorphic => true
 
   scope :desc_created_at, desc(:created_at)
